@@ -7,7 +7,7 @@
   <groupId>javastart</groupId>
   <artifactId>javastart-5-1</artifactId>
   <version>1.0-SNAPSHOT</version>
-  
+
   <dependencies>
     <!-- https://mvnrepository.com/artifact/org.testng/testng -->
     <dependency>
