@@ -25,6 +25,10 @@ public class Room {
         return false;
     }
 
+    public boolean isMinAndCurrentTempEqual(){
+        return currentTemp == minTemp;
+    }
+
     private double calculateCubics() {
         return this.x * this.y * this.z;
     }
@@ -73,14 +77,7 @@ public class Room {
 
     @Override
     public String toString() {
-        return "Room{" +
-                "x=" + x +
-                ", y=" + y +
-                ", z=" + z +
-                ", currentTemp=" + currentTemp +
-                ", minTemp=" + minTemp +
-                ", airConditioningPowerInKw=" + airConditioningPowerInKw +
-                ", hasAirConditioning=" + hasAirConditioning +
-                '}';
+        return "Current temperature in the room is " + currentTemp +
+                " and minimal allowed temperature is " + minTemp;
     }
 }
