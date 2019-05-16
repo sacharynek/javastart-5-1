@@ -1,5 +1,5 @@
 
-import java.sql.SQLOutput;
+
 import java.util.Scanner;
 
 public class Main {
@@ -9,8 +9,17 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         System.out.println("Provide the current temperature in the room?");
         control = sc.nextInt();
-        Room rm = new Room(10, 10, 2.5, control, 10, 5.5, true);
-        System.out.println("Wat per cubic: "+ rm.getWatPerCubic());
+        RoomBuilder rb = new RoomBuilder();
+        Room rm = rb.setX(10)
+                .setY(10)
+                .setZ(10)
+                .setCurrentTemp(control)
+                .setMinTemp(10)
+                .setAirConditioningPowerInKw(5.5)
+                .setHasAirConditioning(true)
+                .build();
+
+        System.out.println("Wat per cubic: " + rm.getWatPerCubic());
 
         control = 1;
         while (control != 0) {
@@ -38,7 +47,7 @@ public class Main {
         System.out.println("We're lowering the temperature");
         rm.turnTempDown();
         System.out.println(rm);
-        System.out.println("Cooling time is: "+rm.calculateCoolingTime());
+        System.out.println("Cooling time is: " + rm.calculateCoolingTime());
         if (rm.isMinAndCurrentTempEqual()) {
             System.out.println("Temperature can't be any lower");
             return 0;

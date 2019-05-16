@@ -36,11 +36,11 @@ public class Room {
     public int calculateCoolingTime() {
         double coolingParam = 1;
         if (watPerCubic < 10) {
-            coolingParam = 0.5;
+            coolingParam = 1.5;
         } else if(watPerCubic <45){
             coolingParam = 1;
         } else{
-            coolingParam = 1.5;
+            coolingParam = 0.5;
         }
 
         return (int) (COOLING_TIME_PER_DEGREE * coolingParam);
