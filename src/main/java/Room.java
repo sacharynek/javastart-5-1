@@ -13,7 +13,7 @@ public class Room {
         this.minTemp = minTemp;
         this.airConditioningPowerInKw = airConditioningPowerInKw;
         this.hasAirConditioning = hasAirConditioning;
-        this.watPerCubic = 0;
+        this.watPerCubic = airConditioningPowerInKw * 1000/calculateCubics();
     }
 
     public boolean turnTempDown(double d) {
@@ -33,8 +33,16 @@ public class Room {
         return this.x * this.y * this.z;
     }
 
-    private int calculateCoolingTime() {
-        double coolingParam = getAirConditioningPowerInKw() / (getWatPerCubic() * calculateCubics());
+    public int calculateCoolingTime() {
+        double coolingParam = 1;
+        if (watPerCubic < 10) {
+            coolingParam = 0.5;
+        } else if(watPerCubic <45){
+            coolingParam = 1;
+        } else{
+            coolingParam = 1.5;
+        }
+
         return (int) (COOLING_TIME_PER_DEGREE * coolingParam);
     }
 
